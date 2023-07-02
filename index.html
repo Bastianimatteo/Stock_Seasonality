@@ -10,7 +10,7 @@
             <form id="form">
                 <div>
                     <label>Ticker</label>
-                    <input type="text" id="ticker" placeholder="ticker" value="AAPL" required>
+                    <input type="text" id="ticker" placeholder="ticker" value="^IXIC" required>
                 </div>
                 <div>                    
                     <label>Year 1</label>
@@ -54,6 +54,12 @@
             <div>
                 <label id="n_months">Analyzed months: 0</label>
             </div>
+        </div>
+
+        <div id="div_select">
+            <select id="select" onchange="select_change()">
+                <option value="-1">All</option>
+            </select>
         </div>
 
         <div>
