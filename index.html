@@ -1,0 +1,72 @@
+<html id="html">
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="index.css">
+    </head>
+
+    <body id="body">
+        <div id="div_input">
+            <form id="form">
+                <div>
+                    <label>Ticker</label>
+                    <input type="text" id="ticker" placeholder="ticker" value="AAPL" required>
+                </div>
+                <div>                    
+                    <label>Year 1</label>
+                    <input type="text" id="period1" placeholder="year1" value="1985" required>
+                </div>
+                <div>                    
+                    <label>Year 2</label>
+                    <input type="text" id="period2" placeholder="year2" value="2023" required>
+                </div>
+                <div id="div_button">
+                    <button type="submit" class="btn btn-primary">INVIA</button>
+                </div>
+                <br>
+                <div>
+                    <label>Example ticker:</label><br>
+                    <label>- Crypto: BTC-USD</label><br>
+                    <label>- Gold: GC=F</label><br>
+                    <label>- Euro/Dollar: EURUSD=X</label>
+                </div>
+            </form>
+        </div>
+
+        <div class="spinner-border text-primary" role="status" id="spinner">
+            <span class="sr-only">Loading...</span>
+          </div>
+
+        <div id="div_change">
+            <div>
+                <table id="table_change" class="table-striped table-sm w-100 table-active">
+                    <tr class="table-dark">
+                        <th>Date</th>
+                        <th>Change</th>
+                        <th>N° months neg</th>
+                        <th>N° months pos</th>
+                        <th>% Pos</th>
+                    </tr>
+                    <tbody id="tbody_change"></tbody>
+                </table>
+            </div>
+            <br>
+            <div>
+                <label id="n_months">Analyzed months: 0</label>
+            </div>
+        </div>
+
+        <div>
+            <table id="table" class="table-striped table-sm w-100 table-active">
+                <tr class="table-dark">
+                    <th>Date</th>
+                    <th>Open</th>
+                    <th>Close</th>
+                    <th>Change</th>
+                </tr>
+                <tbody id="tbody"></tbody>
+            </table>
+        </div>
+   
+    </body>
+    <script type="text/javascript" src="./app.js"></script>
+</html>
