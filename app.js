@@ -3,6 +3,8 @@ var count_neg = [0,0,0,0,0,0,0,0,0,0,0,0]
 var count_pos = [0,0,0,0,0,0,0,0,0,0,0,0]
 var changes = [0,0,0,0,0,0,0,0,0,0,0,0]
 
+var changeChart = null;
+
 var response, timestamp, open, close = []
 
 const tb = document.getElementById("tbody")
@@ -27,7 +29,7 @@ document.getElementById("form").addEventListener("submit", function(event) {
     const period2 = getTimestamp(year2, 1)
 
     var xhttp = new XMLHttpRequest();
-    xhttp.open("GET", "https://query1.finance.yahoo.com/v8/finance/chart/" + ticker + "?period1=" + period1 + "&period2=" + period2 + "&interval=1mo&events=history&includeAdjustedClose=false")
+    xhttp.open("GET", "https://query1.finance.yahoo.com/v8/finance/chart/" + ticker + "?period1=" + period1 + "&period2=" + period2 + "&interval=1mo&events=history")
     xhttp.send();
     xhttp.onreadystatechange = function()
     {
@@ -241,11 +243,6 @@ function fill_table(date, open, close, change)
 }
 
 function fill_graph(){
-    if(window.chart)
-    {
-        window.chart = null
-    }
-
     var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
     var graph_changes = []
@@ -256,7 +253,12 @@ function fill_graph(){
 
     var ctx = document.getElementById('chart').getContext('2d');
 
-    var changeChart = new Chart(ctx, {
+    if(changeChart)
+    {
+        changeChart.destroy()
+    }
+
+    changeChart = new Chart(ctx, {
         type: 'line',
         data: {
             labels: months,
