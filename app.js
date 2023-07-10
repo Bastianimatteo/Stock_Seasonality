@@ -65,6 +65,7 @@ document.getElementById("form").addEventListener("submit", function(event) {
                 }
 
                 fill_table_change()
+                fill_graph()
 
                 select_list()
                 colors()
@@ -116,7 +117,6 @@ function select_change()
     }
     
 }
-
 
 function save_month(month, change)
 {
@@ -238,4 +238,54 @@ function fill_table(date, open, close, change)
     cell_close.innerHTML = close
 
     cell_change.innerHTML = change
+}
+
+function fill_graph(){
+    if(window.chart)
+    {
+        window.chart = null
+    }
+
+    var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+    var graph_changes = []
+    for(var i = 0; i<changes.length; i++)
+    {
+        graph_changes[i] = (changes[i] / count[i]).toFixed(2)
+    }
+
+    var ctx = document.getElementById('chart').getContext('2d');
+
+    var changeChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: months,
+            datasets: [{
+                data: graph_changes,
+                backgroundColor: 'rgba(54, 162, 235, 0.6)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 3
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                    }
+                },
+                x: {
+                    title: {
+                        display: true,
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    display: false
+                }
+            }
+        }
+    });
 }
