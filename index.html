@@ -6,74 +6,88 @@
     </head>
 
     <body id="body">
-        <div id="div_input">
-            <form id="form">
-                <div>
-                    <label>Ticker</label>
-                    <input type="text" id="ticker" placeholder="ticker" value="^IXIC" required>
+        <div id="div_left">
+            <div id="div_left_up">
+                <div id="div_input">
+                    <form id="form">
+                        <div>
+                            <label>Ticker</label>
+                            <input type="text" id="ticker" placeholder="ticker" value="^IXIC" required>
+                        </div>
+                        <div>                    
+                            <label>Year 1</label>
+                            <input type="text" id="period1" placeholder="year1" value="1985" required>
+                        </div>
+                        <div>                    
+                            <label>Year 2</label>
+                            <input type="text" id="period2" placeholder="year2" value="2023" required>
+                        </div>
+                        <div id="div_button">
+                            <button type="submit" class="btn btn-primary">SEND</button>
+                        </div>
+                        <br>
+                        <div>
+                            <label>Examples of tickers syntax:</label><br>
+                            <label>- Crypto: BTC-USD</label><br>
+                            <label>- S&P500: ^GSPC</label><br>
+                            <label>- Nasdaq: ^IXIC</label><br>
+                            <label>- Gold: GC=F</label><br>
+                            <label>- Crude Oil: CL=F</label><br>
+                            <label>- Natural Gas: NG=F</label><br>
+                            <label>- Euro/Dollar: EURUSD=X</label>
+                        </div>
+                    </form>
                 </div>
-                <div>                    
-                    <label>Year 1</label>
-                    <input type="text" id="period1" placeholder="year1" value="1985" required>
+
+                <div class="spinner-border text-primary" role="status" id="spinner">
+                    <span class="sr-only">Loading...</span>
                 </div>
-                <div>                    
-                    <label>Year 2</label>
-                    <input type="text" id="period2" placeholder="year2" value="2023" required>
+
+                <div id="div_change">
+                    <div>
+                        <table id="table_change" class="table-striped table-sm w-100 table-active">
+                            <tr class="table-dark">
+                                <th>Date</th>
+                                <th>Avg Change</th>
+                                <th>N° months neg</th>
+                                <th>N° months pos</th>
+                                <th>% Pos</th>
+                            </tr>
+                            <tbody id="tbody_change"></tbody>
+                        </table>
+                    </div>
+                    <br>
+                    <div>
+                        <label id="n_months">Analyzed months: 0</label>
+                    </div>
                 </div>
-                <div id="div_button">
-                    <button type="submit" class="btn btn-primary">SEND</button>
-                </div>
-                <br>
-                <div>
-                    <label>Examples of tickers syntax:</label><br>
-                    <label>- Crypto: BTC-USD</label><br>
-                    <label>- Gold: GC=F</label><br>
-                    <label>- Euro/Dollar: EURUSD=X</label>
-                </div>
-            </form>
+            </div>
+            <div id="div_left_down">
+                <canvas id="chart"></canvas>
+            </div>
         </div>
 
-        <div class="spinner-border text-primary" role="status" id="spinner">
-            <span class="sr-only">Loading...</span>
-          </div>
+        <div id="div_right">
+            <div id="div_select">
+                <label>Select month to view</label><br>
+                <select id="select" onchange="select_change()">
+                    <option value="-1">All</option>
+                </select>
+            </div>
 
-        <div id="div_change">
-            <div>
-                <table id="table_change" class="table-striped table-sm w-100 table-active">
+            <div id="div_table">
+                <table id="table" class="table-striped table-sm w-100 table-active">
                     <tr class="table-dark">
                         <th>Date</th>
-                        <th>Avg Change</th>
-                        <th>N° months neg</th>
-                        <th>N° months pos</th>
-                        <th>% Pos</th>
+                        <th>Open</th>
+                        <th>Close</th>
+                        <th>Change</th>
                     </tr>
-                    <tbody id="tbody_change"></tbody>
+                    <tbody id="tbody"></tbody>
                 </table>
             </div>
-            <br>
-            <div>
-                <label id="n_months">Analyzed months: 0</label>
-            </div>
         </div>
-
-        <div id="div_select">
-            <select id="select" onchange="select_change()">
-                <option value="-1">All</option>
-            </select>
-        </div>
-
-        <div>
-            <table id="table" class="table-striped table-sm w-100 table-active">
-                <tr class="table-dark">
-                    <th>Date</th>
-                    <th>Open</th>
-                    <th>Close</th>
-                    <th>Change</th>
-                </tr>
-                <tbody id="tbody"></tbody>
-            </table>
-        </div>
-   
     </body>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script type="text/javascript" src="./app.js"></script>
 </html>
