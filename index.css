@@ -1,4 +1,4 @@
-#table {text-align: center; font-size: 13px; font-family: arial;}
+#table {text-align: center; font-size: 12px; font-family: arial;}
 #table_change {text-align: center; font-size: 15px; font-family: arial;}
 
 #table th{border: 1px solid grey; position: sticky; top: -1px}
@@ -8,6 +8,14 @@ td{border: 1px solid grey}
 
 #div_button{display: flex; justify-content: center;}
 
-#div_input{margin-left: 50px}
-div {margin-right: 30px}
-#body {display: flex;}
+#div_input{margin-left: 30px;}
+#div_input{margin-right: 30px}
+#spinner{margin-right: 30px}
+#div_change{margin-right: 50px}
+#div_select{margin-right: 30px}
+
+body{display:flex}
+#div_left{width: 60%; float:left;}
+#div_right{width: 35%; float: left; display: flex;}
+#div_left_up{display:flex; width: 100%}
+#div_left_down{width: 100%;}
